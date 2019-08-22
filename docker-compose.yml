@@ -1,0 +1,44 @@
+version: '3.4'
+
+volumes:
+  db_data:
+  venv:
+
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
+      - ./nginx/log:/var/log/nginx
+      - ./nginx/static:/static
+    depends_on:
+      - web
+
+  db:
+    image: mysql:5.7
+    expose:
+      - "3306"
+    env_file: .env
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d
+
+  web:
+    build: ./web
+    env_file: .env
+    entrypoint: pipenv run
+    command: start
+    volumes:
+      - ./web:/code
+      - venv:/code/.venv
+      - ./nginx/static:/static
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    expose:
+      - "8001"
+    depends_on:
+      - db

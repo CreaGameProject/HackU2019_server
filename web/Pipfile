@@ -8,6 +8,7 @@ django = "==2.1.10"
 pymysql = "*"
 uwsgi = "*"
 django-environ = "*"
+django-ask-sdk = "*"
 
 [dev-packages]
 ipython = "*"

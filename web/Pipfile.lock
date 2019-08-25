@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "05bb225ec7f190773f84f7014c2f328fe4d33fb380fabeff2f34727aaf3aee91"
+            "sha256": "60de8c5340f8f470307cd934532cf5017bb015497573c54f3feafa33daada0ae"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,10 +18,10 @@
     "default": {
         "ask-sdk-core": {
             "hashes": [
-                "sha256:a97bf980ff756671fe6d5c44be2960b0df91057d7f74b65607032fc07195cc33",
-                "sha256:fbcdcfb6fde212aa8d5cf4ae5ad39cb31f0daae7e4ad31a303eb971b9bda889c"
+                "sha256:2650570a6d4ffd5d988ea8628b4175e3ca349b65c025748b0e4e0ecb55949243",
+                "sha256:94e345ae88b95bd669c885e206d87da177573bd2aa3ac3f4f0144585e5963a95"
             ],
-            "version": "==1.10.2"
+            "version": "==1.11.0"
         },
         "ask-sdk-model": {
             "hashes": [
@@ -32,17 +32,17 @@
         },
         "ask-sdk-runtime": {
             "hashes": [
-                "sha256:91f19a5f4f13fd4f3462c9e2abe99c9bd442c74989b89f3fa3a34b889d63552f",
-                "sha256:c223bc2249bd7fb581c58ce2639119a9d2d57cd09d0fe32536df8771a1550b0d"
+                "sha256:2b9433b78254038aeb51a0793ea3ef25ac1b92846b195ca0b4ca2e2be643a237",
+                "sha256:df73ca390f50574b1f749ec1162ec5b70d8e6497230b286b65b246d2078644a5"
             ],
-            "version": "==1.10.2"
+            "version": "==1.11.0"
         },
         "ask-sdk-webservice-support": {
             "hashes": [
-                "sha256:1696efa37d994fcb0a7e9edc1dd16346e291b49ef479969cc6fc824b599c2dd9",
-                "sha256:8afc00561d6950baa4f8acd4743f73c57bbb0accb6a8300d9f3f57347f45ae3a"
+                "sha256:a4b45e16514102aa1071ffc2bcd05c7a1475d96ead4d8c405953d3bae9597cec",
+                "sha256:d7f0a27b76995353b12178384458b3a3438be0d46d5d2511dc8fdf18221f421c"
             ],
-            "version": "==0.1.2"
+            "version": "==1.0.0"
         },
         "asn1crypto": {
             "hashes": [
@@ -121,11 +121,11 @@
         },
         "django": {
             "hashes": [
-                "sha256:65e2a548a52fca560cdd4e35f4fa1a79140f405af48950e59702a37e4227e958",
-                "sha256:d4244e2c9653e1349b37ab0cdf108607ba9d1e41f71d0711ac71360e4026ce94"
+                "sha256:1a41831eace203fd1939edf899e07d7abd12ce9bafc3d9a5a63a24a8d1d12bd5",
+                "sha256:305b6c4fce9e03bb746e35780c2c4d52f29ea1669f15633cfd41bc8821c74c76"
             ],
             "index": "pypi",
-            "version": "==2.1.10"
+            "version": "==2.1.11"
         },
         "django-ask-sdk": {
             "hashes": [

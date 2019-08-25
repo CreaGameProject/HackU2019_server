@@ -2,10 +2,11 @@ from datetime import datetime
 
 from django_ask_sdk.skill_adapter import SkillAdapter
 import ask_sdk_core.utils as ask_utils
-from ask_sdk_core.skill_builder import SkillBuilder
+from ask_sdk_core.skill_builder import CustomSkillBuilder
 from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
-from ask_sdk_model import Response
+from ask_sdk_model import Response, ui
+from ask_sdk_core.api_client import DefaultApiClient
 
 
 class LaunchRequestHandler(AbstractRequestHandler):
@@ -47,6 +48,41 @@ class HelloWorldIntentHandler(AbstractRequestHandler):
                 .ask(speak_output)
                 .response
         )
+
+
+class ReminderIntentHandler(AbstractRequestHandler):
+    def can_handle(self, handler_input: HandlerInput) -> bool:
+        return ask_utils.is_intent_name('ReminderIntent')(handler_input)
+
+    def handle(self, handler_input: HandlerInput) -> Response:
+        if not handler_input.request_envelope.context.system.api_access_token:
+            return (
+                handler_input.response_builder
+                    .speak('権限がありません。リクエストを送信しました')
+                    .set_card(ui.AskForPermissionsConsentCard())
+                    .response
+            )
+
+        client = handler_input.service_client_factory.get_reminder_management_service()
+        reminder_request = {
+            'trigger': {
+                'type': 'SCHEDULED_RELATIVE',
+                'offsetInSeconds': '20',
+            },
+            'alertInfo': {
+                'spokenInfo': {
+                    'content': [{
+                        'locale': 'ja-JP',
+                        'text': 'ああああああああ',
+                    }],
+                },
+            },
+            'pushNotification': {
+                'status': 'ENABLED',
+            },
+        }
+        client.create_reminder(reminder_request)
+        return handler_input.response_builder.speak('リマインダーしました').response
 
 
 class HelpIntentHandler(AbstractRequestHandler):
@@ -96,10 +132,11 @@ class SessionEndedRequestHandler(AbstractRequestHandler):
         )
 
 
-sb = SkillBuilder()
+sb = CustomSkillBuilder(api_client=DefaultApiClient())
 
 sb.add_request_handler(LaunchRequestHandler())
 sb.add_request_handler(HelloWorldIntentHandler())
+sb.add_request_handler(ReminderIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(SessionEndedRequestHandler())

@@ -8,6 +8,7 @@ django = "==2.1.11"
 pymysql = "*"
 uwsgi = "*"
 django-environ = "*"
+django-rest-framework = "*"
 
 [dev-packages]
 ipython = "*"

@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.urls import path
 
-from . import skills
+from . import actions
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', skills.skill_view),
+    path('api', actions.webhook),
 ]

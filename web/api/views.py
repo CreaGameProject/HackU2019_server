@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
-from .models import AlarmTask, Sound
-from .serializer import AlarmTaskSerializer, SoundSerializer
+from .models import AlarmTask, Sound, HeartRate
+from .serializer import AlarmTaskSerializer, SoundSerializer, HeartRateSerializer
 
 
 class TaskAlarmViewSet(viewsets.ModelViewSet):
@@ -12,3 +12,8 @@ class TaskAlarmViewSet(viewsets.ModelViewSet):
 class SoundViewSet(viewsets.ModelViewSet):
     queryset = Sound.objects.all()
     serializer_class = SoundSerializer
+
+
+class HeartRateViewSet(viewsets.ModelViewSet):
+    queryset = HeartRate.objects.all()
+    serializer_class = HeartRateSerializer

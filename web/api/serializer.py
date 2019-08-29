@@ -13,3 +13,9 @@ class SoundSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Sound
         fields = ('id', 'file', 'created_at')
+
+
+class HeartRateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.HeartRate
+        fields = ('id', 'data', 'split_data', 'created_at')

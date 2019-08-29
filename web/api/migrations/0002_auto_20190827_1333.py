@@ -5,8 +5,12 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 
-class Migration(migrations.Migration):
+# エラー回避用
+def upload_to():
+    pass
 
+
+class Migration(migrations.Migration):
     dependencies = [
         ('api', '0001_initial'),
     ]
@@ -16,7 +20,7 @@ class Migration(migrations.Migration):
             name='Sound',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('file', models.FileField(upload_to=api.models.upload_to)),
+                ('file', models.FileField(upload_to=upload_to)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
             ],
         ),
